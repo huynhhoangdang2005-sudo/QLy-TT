@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+tro_nha.db
+tro_nha.db-shm
+tro_nha.db-wal
+meter_photos/
+sqlserver.json
+android-tenant/local.properties
+android-tenant/.gradle/
+android-tenant/build/
+android-tenant/app/build/
+*.apk
+.vscode/

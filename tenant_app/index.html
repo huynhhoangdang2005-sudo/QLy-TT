@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#145c45"><meta name="description" content="Xem hóa đơn và gửi chỉ số công tơ Trọ Nhà">
+  <link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="/styles.css">
+  <title>Trọ Nhà · Khách thuê</title>
+</head>
+<body>
+  <main class="shell">
+    <header class="top"><div class="brand"><span class="mark">⌂</span><div><b>Trọ Nhà</b><small>Cổng thông tin khách thuê</small></div></div><div><button id="password-open" class="quiet hidden">Đổi mật khẩu</button> <button id="logout" class="quiet hidden">Đăng xuất</button></div></header>
+    <section id="login" class="login card">
+      <div class="eyebrow">TÀI KHOẢN KHÁCH THUÊ</div><h1>Chào bạn</h1><p>Đăng nhập để xem hóa đơn và gửi chỉ số công tơ.</p>
+      <form id="login-form"><label>Tên đăng nhập<input id="username" autocomplete="username" required></label><label>Mật khẩu<input id="password" type="password" autocomplete="current-password" required></label><button class="primary">Đăng nhập</button><div id="login-error" class="error"></div></form>
+    </section>
+    <section id="home" class="hidden">
+      <div class="welcome"><div class="eyebrow">KHÔNG GIAN CỦA BẠN</div><h1 id="greeting">Xin chào</h1><p>Xem khoản cần thanh toán và cập nhật chỉ số điện nước.</p></div>
+      <nav class="tabs"><button class="tab active" data-tab="bills">Hóa đơn</button><button class="tab" data-tab="meters">Gửi chỉ số</button><button class="tab" data-tab="notices">Thông báo <span id="notice-count"></span></button></nav>
+      <div id="bills" class="panel"></div>
+      <div id="meters" class="panel hidden">
+        <article class="card meter-card">
+          <div class="eyebrow">ĐIỆN · CHỈ SỐ THÁNG NÀY</div><h2>Gửi công tơ điện</h2>
+          <p>Chụp ảnh mới hoặc chọn ảnh công tơ điện trong thư viện.</p>
+          <form class="meter-form" data-utility="Điện"><label>Ảnh công tơ<input data-role="photo" type="file" accept="image/*" required></label><img data-role="preview" class="preview hidden" alt="Ảnh công tơ điện đã chọn"><div data-role="ocr" class="hint"></div><label>Chỉ số điện hiện tại<input data-role="reading" type="number" min="0" step="any" inputmode="decimal" placeholder="Nhập nếu ảnh không đọc rõ" required></label><div data-role="usage" class="hint"></div><button class="primary">Cập nhật tiền điện</button><div data-role="result" class="hint"></div></form>
+        </article>
+        <article class="card meter-card">
+          <div class="eyebrow">NƯỚC · CHỈ SỐ THÁNG NÀY</div><h2>Gửi công tơ nước</h2>
+          <p>Chụp ảnh mới hoặc chọn ảnh công tơ nước trong thư viện.</p>
+          <form class="meter-form" data-utility="Nước"><label>Ảnh công tơ<input data-role="photo" type="file" accept="image/*" required></label><img data-role="preview" class="preview hidden" alt="Ảnh công tơ nước đã chọn"><div data-role="ocr" class="hint"></div><label>Chỉ số nước hiện tại<input data-role="reading" type="number" min="0" step="any" inputmode="decimal" placeholder="Nhập nếu ảnh không đọc rõ" required></label><div data-role="usage" class="hint"></div><button class="primary">Cập nhật tiền nước</button><div data-role="result" class="hint"></div></form>
+        </article>
+        <div id="reading-history" class="history-block"></div>
+      </div>
+      <div id="notices" class="panel hidden"></div>
+      <form id="password-form" class="card meter-card hidden"><h2>Đổi mật khẩu</h2><label>Mật khẩu hiện tại<input id="old-password" type="password" required></label><label>Mật khẩu mới (ít nhất 10 ký tự)<input id="new-password" type="password" minlength="10" required></label><button class="primary">Cập nhật mật khẩu</button><div id="password-result" class="hint"></div></form>
+    </section>
+    <footer>Hóa đơn được cập nhật tự động sau khi gửi chỉ số. Vui lòng kiểm tra số đọc trước khi gửi.</footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js" defer></script><script src="/app.js" defer></script>
+</body>
+</html>
